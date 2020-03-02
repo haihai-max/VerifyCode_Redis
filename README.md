@@ -1,0 +1,3 @@
+# SpringBoot-
+学习SpringBoot中的一些简单的练习
+这是一个使用springboot+redis+ajax实现的一个获取随机验证码和验证验证码的程序
