@@ -1,0 +1,2 @@
+# VerifyCode_Redis
+这是一个使用springboot+redis+ajax实现的一个获取随机验证码和验证验证码的程序
