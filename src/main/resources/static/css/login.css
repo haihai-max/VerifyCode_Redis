@@ -1,0 +1,39 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.form{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.login{
+    padding: 6px 16px;
+    border: 1px solid #446d88;
+    background: #58a linear-gradient(#77a0bb, #58a);
+    border-radius: 6px;
+    box-shadow: 0 1px 5px gray;
+    color: white;
+    text-shadow: 0 -1px 1px #335166;
+    font-size: 16px;
+    line-height: 25px;
+}
+
+.getVerifyCode{
+    padding: 6px 16px;
+    border: 1px solid #446d88;
+    background: #58a linear-gradient(#77a0bb, #58a);
+    border-radius: 6px;
+    box-shadow: 0 1px 5px gray;
+    color: white;
+    text-shadow: 0 -1px 1px;
+    font-size: 16px;
+    line-height: 25px;
+}

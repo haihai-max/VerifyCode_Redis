@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>verify</title>
+    <link rel="stylesheet" type="text/css" href="/css/login.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        var t=120;
+        var interval;
+        function getVerifyCode() {
+            $.get("/getVerifyCode",$("#codeForm").serialize(),function (data) {
+                if (data=="true"){
+                    t=120;
+                    clearInterval(interval);
+                    interval=setInterval("timekeeping()",1000);
+                }else {
+                    clearInterval(interval);
+                    $('#time').text("您已经超过次数，请明日再来");
+                }
+            })
+        }
+        function timekeeping() {
+            $('#time').text("请在"+t+"秒内填写验证码");
+            t--;
+            if(t<=0){
+                clearInterval(interval);
+                $('#time').text("验证码失效,请点击重新发送");
+            }
+        }
+        function verify() {
+            $.get("/verifyCode",$("#codeForm").serialize(),function (data) {
+                if (data=="true") {
+                    clearInterval(interval);
+                    alert("登录成功")
+                }else {
+                    alert("验证码输入错误");
+                }
+
+            })
+            
+        }
+    </script>
+</head>
+
+<body>
+<div class="form">
+    <form id="codeForm">
+        <h1 style="text-align: center">请登录</h1>
+
+        电话号码：<input type="text" id="inputPhoneNumber" name="inputPhoneNumber" placeholder="电话号码"/><br>
+        <div id="time" style="font-size: 12px"></div><br>
+        验&nbsp;证&nbsp;码&nbsp;：<input type="text" id="inputVerifyCode" name="inputVerifyCode" placeholder="验证码"><br>
+
+        <input type="checkbox"> 记住我<br>
+
+        <input type="button"  class="getVerifyCode" value="获取验证码" onclick="getVerifyCode();">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="login" value="登录" onclick="verify()">
+    </form>
+</div>
+
+</body>
+</html>
